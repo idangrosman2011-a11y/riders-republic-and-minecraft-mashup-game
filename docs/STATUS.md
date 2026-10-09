@@ -8,3 +8,5 @@
 | Riders Republic content extraction (models, sounds, callout text) | **Not implemented.** Riders Republic (AnvilNext 2.0, `.forge` archives) has no public extractor, so this has to be written against a real install. Until then the gear is an outline box, there are no ride sounds, and trick names come from the sheet |
 | Real gameplay screenshot with Riders Republic content | Not possible until the extractor exists |
 | Melty | Recipe in `melty.draft.json` (validated). Draft listing only, no release submitted |
+
+Melty draft: modId `5d458598-1537-4752-973d-3e8ef70430f4` (slug `riders-craft`), Studio https://melty.gg/studio/5d458598-1537-4752-973d-3e8ef70430f4
