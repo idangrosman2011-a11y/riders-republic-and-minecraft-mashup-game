@@ -15,10 +15,13 @@ import java.util.List;
 
 /** Riders Republic's trick loop: rotate and grab in the air, land clean to bank points into a combo. */
 public final class TrickSystem {
-    private static final float FLIP_RATE = 18f, SPIN_RATE = 24f, LAND_TOLERANCE = 50f;
-    private static final int COMBO_WINDOW = 60;
+    private static final float FLIP_RATE = 30f, SPIN_RATE = 36f, LAND_TOLERANCE = 100f;
+    private static final int COMBO_WINDOW = 60, SHORT_AIR = 8;
     private static final String[] TRICK_KEYS = {"grab_left", "grab_right", "style", "flip_forward", "flip_back", "spin_left", "spin_right"};
+    private static final boolean DEV = Boolean.getBoolean("riderscraft.devtest");
     private static boolean proximityActive;
+    /** Keys already held at take-off (W to ride, Sprint to pedal) only count once released and pressed again. */
+    private static final boolean[] latched = new boolean[TRICK_KEYS.length];
 
     public static void tick(Minecraft mc, LocalPlayer p, RiderState s) {
         s.prevSpin = s.spin; s.prevFlip = s.flip; s.prevRoll = s.roll;
@@ -42,7 +45,12 @@ public final class TrickSystem {
 
     private static void air(LocalPlayer p, RiderState s, Gear g) {
         boolean[] held = new boolean[TRICK_KEYS.length];
-        for (int i = 0; i < held.length; i++) held[i] = Controls.isDown(TRICK_KEYS[i]);
+        for (int i = 0; i < held.length; i++) {
+            boolean down = Controls.isDown(TRICK_KEYS[i]);
+            if (s.airTicks == 1) latched[i] = down;
+            else if (!down) latched[i] = false;
+            held[i] = down && !latched[i];
+        }
         boolean modifier = held[0] || held[1] || held[2];
 
         if (s.airTicks > 2 && (!modifier || g.isSnow() || g.isBike())) {
@@ -110,11 +118,18 @@ public final class TrickSystem {
     private static void land(Minecraft mc, LocalPlayer p, RiderState s, Gear g, long now) {
         float flipRem = Mth.wrapDegrees(s.flip), spinRem = Mth.wrapDegrees(s.spin);
         boolean upright = Math.abs(flipRem) < LAND_TOLERANCE;
-        boolean switchLanding = g.isSnow() && Math.abs(Math.abs(spinRem) - 180) < LAND_TOLERANCE;
+        // Within LAND_TOLERANCE of upright the rider straightens out, like Riders Republic's landing assist.
+        boolean switchLanding = g.isSnow() && Math.abs(Math.abs(spinRem) - 180) < 50f;
         boolean facing = Math.abs(spinRem) < LAND_TOLERANCE || switchLanding;
         boolean clean = upright && facing && s.animTicksLeft == 0 && s.heldGrab == null || g.physics == Gear.Physics.GLIDE && s.airTicks > 0 && upright;
 
+        if (!clean && s.airTicks < SHORT_AIR) {
+            // A tiny hop off a step: drop the unfinished trick rather than punish the rider.
+            s.resetJump();
+            return;
+        }
         if (!clean) {
+            if (DEV) RidersCraft.LOG.info("RRTEST bail flip={} spin={} anim={} grab={} air={}", s.flip, s.spin, s.animTrick, s.heldGrab, s.airTicks);
             s.callout(RRImporter.calloutText("bail", "Bail!"), 0xFF5A4A, now);
             s.comboPoints = 0; s.comboMultiplier = 1;
             s.speed *= 0.2; s.gvx = s.gvy = s.gvz = 0;

@@ -12,18 +12,20 @@ public final class RiderHud {
     public static void render(GuiGraphics g, DeltaTracker delta) {
         Minecraft mc = Minecraft.getInstance();
         RiderState s = RiderState.LOCAL;
-        if (mc.player == null || mc.options.hideGui || s.gear == Gear.ON_FOOT) return;
+        if (mc.player == null || mc.options.hideGui || mc.screen instanceof GearWheelScreen) return;
+        if (!RRImporter.status().ok()) g.drawString(mc.font, Component.translatable("hud.riderscraft.import_missing"), 6, 18, 0xFF8080);
+        if (s.gear == Gear.ON_FOOT) return;
         var font = mc.font;
         int w = g.guiWidth(), h = g.guiHeight();
 
         int kmh = (int) Math.round(s.speed * 20 * 3.6);
-        g.drawString(font, kmh + " km/h", w - 70, h - 40, 0xFFFFFF);
-        g.drawString(font, Component.translatable("gear.riderscraft." + s.gear.name().toLowerCase()), w - 70, h - 28, 0xFFD24A);
+        g.drawString(font, kmh + " km/h", w - 100, h - 40, 0xFFFFFF);
+        g.drawString(font, Component.translatable("gear.riderscraft." + s.gear.name().toLowerCase()), w - 100, h - 28, 0xFFD24A);
 
         if (s.gear.boostFuelTicks > 0) {
             int bw = 60, filled = (int) (bw * s.fuel / s.gear.boostFuelTicks);
-            g.fill(w - 70, h - 16, w - 70 + bw, h - 12, 0x80000000);
-            g.fill(w - 70, h - 16, w - 70 + filled, h - 12, 0xFFFF6A00);
+            g.fill(w - 100, h - 16, w - 100 + bw, h - 12, 0x80000000);
+            g.fill(w - 100, h - 16, w - 100 + filled, h - 12, 0xFFFF6A00);
         }
         if (s.comboPoints > 0) {
             g.drawCenteredString(font, s.comboPoints + "  x" + s.comboMultiplier, w / 2, 30, 0xFFD24A);
@@ -36,9 +38,6 @@ public final class RiderHud {
             int alpha = (int) Math.max(30, 255 - (now - c.bornTick()) * 3);
             g.drawCenteredString(font, c.text(), w / 2, y, (alpha << 24) | c.color());
             y += 11;
-        }
-        if (!RRImporter.status().ok()) {
-            g.drawString(font, Component.translatable("hud.riderscraft.import_missing"), 6, h - 60, 0xFF8080);
         }
     }
 }

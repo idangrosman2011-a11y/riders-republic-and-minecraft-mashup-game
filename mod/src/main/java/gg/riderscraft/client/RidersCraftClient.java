@@ -27,6 +27,7 @@ public class RidersCraftClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STARTED.register(mc -> RRImporter.startInBackground(mc.gameDirectory.toPath()));
         ClientPlayConnectionEvents.JOIN.register((h, s, mc) -> equip(RiderState.LOCAL.gear));
         ClientTickEvents.END_CLIENT_TICK.register(RidersCraftClient::tick);
+        if (Boolean.getBoolean("riderscraft.devtest")) DevTest.install();
     }
 
     private static void tick(Minecraft mc) {
@@ -55,6 +56,7 @@ public class RidersCraftClient implements ClientModInitializer {
         if (gear != s.gear && mc.player != null) {
             s.speed = mc.player.getDeltaMovement().horizontalDistance();
             s.heading = Math.toRadians(mc.player.getYRot());
+            s.lastGroundY = mc.player.getY();
             s.gliding = false;
             s.fuel = gear.boostFuelTicks;
         }

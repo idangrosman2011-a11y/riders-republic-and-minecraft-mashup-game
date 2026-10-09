@@ -15,7 +15,7 @@ g = sheet("gear")
 lines = []
 for r in g["rows"]:
     lines.append(f'    {r["id"].upper()}({j(r["name"])}, {j(r["sport"])}, Physics.{r["physics"].upper()}, {r["wheelSlot"]}, '
-                 f'{float(r["maxSpeed"])}f, {float(r["pedalAccel"])}f, {float(r["turnRate"])}f, {float(r["slopeGain"])}f, {float(r["friction"])}f, '
+                 f'{float(r["maxSpeed"])}f, {float(r["pedalAccel"])}f, {float(r["pedalTopSpeed"])}f, {float(r["turnRate"])}f, {float(r["slopeGain"])}f, {float(r["friction"])}f, '
                  f'{j(r["canClimb"])}, {float(r["stepHeight"])}f, {float(r["jumpBoost"])}f, {float(r["glideLift"])}f, {float(r["glideDive"])}f, '
                  f'{float(r["glideClimb"])}f, {float(r["glideDrag"])}f, {float(r["boostAccel"])}f, {r["boostFuelTicks"]}, {float(r["fuelRegen"])}f, '
                  f'{j(r["rrModel"])}, {j(r["rrSound"])}, {j(r["fallbackShape"])})')
@@ -27,16 +27,16 @@ open(os.path.join(OUT, "Gear.java"), "w").write(HEAD.format("gear") + """public 
     public final String displayName, sport, rrModel, rrSound, fallbackShape;
     public final Physics physics;
     public final int wheelSlot, boostFuelTicks;
-    public final float maxSpeed, pedalAccel, turnRate, slopeGain, friction, stepHeight, jumpBoost,
+    public final float maxSpeed, pedalAccel, pedalTopSpeed, turnRate, slopeGain, friction, stepHeight, jumpBoost,
             glideLift, glideDive, glideClimb, glideDrag, boostAccel, fuelRegen;
     public final boolean canClimb;
 
-    Gear(String displayName, String sport, Physics physics, int wheelSlot, float maxSpeed, float pedalAccel, float turnRate,
+    Gear(String displayName, String sport, Physics physics, int wheelSlot, float maxSpeed, float pedalAccel, float pedalTopSpeed, float turnRate,
          float slopeGain, float friction, boolean canClimb, float stepHeight, float jumpBoost, float glideLift, float glideDive,
          float glideClimb, float glideDrag, float boostAccel, int boostFuelTicks, float fuelRegen,
          String rrModel, String rrSound, String fallbackShape) {
         this.displayName = displayName; this.sport = sport; this.physics = physics; this.wheelSlot = wheelSlot;
-        this.maxSpeed = maxSpeed; this.pedalAccel = pedalAccel; this.turnRate = turnRate; this.slopeGain = slopeGain;
+        this.maxSpeed = maxSpeed; this.pedalAccel = pedalAccel; this.pedalTopSpeed = pedalTopSpeed; this.turnRate = turnRate; this.slopeGain = slopeGain;
         this.friction = friction; this.canClimb = canClimb; this.stepHeight = stepHeight; this.jumpBoost = jumpBoost;
         this.glideLift = glideLift; this.glideDive = glideDive; this.glideClimb = glideClimb; this.glideDrag = glideDrag;
         this.boostAccel = boostAccel; this.boostFuelTicks = boostFuelTicks; this.fuelRegen = fuelRegen;

@@ -18,7 +18,7 @@ public final class RiderState {
     public boolean gliding;
     public double gvx, gvy, gvz;  // glide velocity
     public float fuel;
-    public double lastY;
+    public double lastY, lastGroundY;
     public boolean wasOnGround = true;
 
     // tricks in the current jump

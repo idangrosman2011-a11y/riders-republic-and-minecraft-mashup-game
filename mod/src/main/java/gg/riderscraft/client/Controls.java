@@ -47,7 +47,7 @@ public final class Controls {
         KeyMapping km = mapping(c);
         InputConstants.Key key = KeyBindingHelper.getBoundKeyOf(km);
         if (key.getType() != InputConstants.Type.KEYSYM || key.getValue() == InputConstants.UNKNOWN.getValue()) return km.isDown();
-        return InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), key.getValue());
+        return km.isDown() || InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), key.getValue());
     }
 
     public static boolean isDown(String controlId) { return isDown(Control.byId(controlId)); }

@@ -20,6 +20,8 @@ public final class RidePhysics {
         Gear g = s.gear;
         if (g.physics == Gear.Physics.VANILLA || p.isPassenger() || p.getAbilities().flying || p.isInWater()) {
             s.gliding = false;
+            s.speed = p.getDeltaMovement().horizontalDistance();
+            s.lastGroundY = p.getY();
             s.lastY = p.getY();
             s.wasOnGround = p.onGround();
             return;
@@ -32,15 +34,16 @@ public final class RidePhysics {
     }
 
     public static Surface surfaceUnder(LocalPlayer p) {
+        // Snow layers and powder snow sit in the feet block, on top of whatever is underneath: they win.
+        BlockPos feet = BlockPos.containing(p.getX(), p.getY() + 0.05, p.getZ());
+        Surface top = Surface.of(BuiltInRegistries.BLOCK.getKey(p.level().getBlockState(feet).getBlock()).toString());
+        if (top != Surface.DEFAULT) return top;
         BlockPos below = BlockPos.containing(p.getX(), p.getY() - 0.2, p.getZ());
-        var state = p.level().getBlockState(below);
-        if (state.isAir()) state = p.level().getBlockState(below.above()); // snow layers sit in the feet block
-        return Surface.of(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());
+        return Surface.of(BuiltInRegistries.BLOCK.getKey(p.level().getBlockState(below).getBlock()).toString());
     }
 
     private static void ground(LocalPlayer p, RiderState s, Gear g) {
         float forward = p.input.forwardImpulse;
-        double dy = p.getY() - s.lastY;
         double target = Math.toRadians(p.getYRot());
 
         if (p.onGround()) {
@@ -50,17 +53,26 @@ public final class RidePhysics {
             s.heading += Math.toRadians(turn);
             s.speed *= 1.0 - Math.abs(turn) / 900.0;
 
-            if (forward > 0) s.speed += g.pedalAccel * (Controls.isDown(Control.BOOST) && g.isBike() ? 1.6 : 1.0);
+            boolean sprint = Controls.isDown(Control.BOOST) && g.isBike();
+            double pedalTop = g.pedalTopSpeed * (sprint ? 1.3 : 1.0);
+            if (forward > 0 && s.speed < pedalTop) s.speed = Math.min(pedalTop, s.speed + g.pedalAccel * (sprint ? 1.6 : 1.0));
             if (forward < 0) s.speed *= 0.86; // brake / snowplough
-            if (dy < 0) s.speed += -dy * g.slopeGain;
-            else if (dy > 0 && !g.canClimb) s.speed -= dy * g.slopeGain * 1.5;
+            // Height lost since the last ground contact (steps, drops, landings) becomes speed; height gained costs it.
+            double dy = p.getY() - s.lastGroundY;
+            double energy = s.speed * s.speed - 2 * GRAVITY * dy * g.slopeGain * (dy > 0 && !g.canClimb ? 1.5 : 1.0);
+            s.speed = Math.sqrt(Math.max(0, energy));
+            s.lastGroundY = p.getY();
 
             Surface surf = surfaceUnder(p);
             double mul = g.isSnow() ? surf.snowFrictionMul : surf.bikeFrictionMul;
             s.speed *= 1.0 - Math.min(0.5, g.friction * mul);
             if (s.speed < 0.004 && forward <= 0) s.speed = 0;
 
-            if (p.horizontalCollision) s.speed *= 0.3; // ran into something
+            if (p.horizontalCollision) {
+                // Ran into something: keep only what actually got through.
+                double moved = Math.hypot(p.getX() - p.xo, p.getZ() - p.zo);
+                s.speed = Math.max(moved, s.speed * 0.5);
+            }
             // Take-off: jump keeps momentum and gets the gear's pop.
             if (!s.wasOnGround) s.speed = Math.max(s.speed, p.getDeltaMovement().horizontalDistance());
         } else {
@@ -73,6 +85,7 @@ public final class RidePhysics {
     }
 
     private static void glide(LocalPlayer p, RiderState s, Gear g) {
+        s.lastGroundY = p.getY();
         if (p.onGround()) {
             s.gliding = false;
             s.fuel = Math.min(g.boostFuelTicks, s.fuel + g.fuelRegen * 4);

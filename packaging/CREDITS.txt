@@ -1,0 +1,10 @@
+Riders Craft - Riders Republic x Minecraft: Java Edition
+Mod: Riders Craft by idangrosman2011. Source: https://github.com/idangrosman2011-a11y/riders-republic-and-minecraft-mashup-game
+
+Bundled third-party software:
+- Prism Launcher 10.0.2 (portable), GPL-3.0, by the Prism Launcher contributors. Source: https://github.com/PrismLauncher/PrismLauncher
+- Fabric API 0.116.17+1.21.1, Apache-2.0, by FabricMC. Source: https://github.com/FabricMC/fabric
+Fabric Loader and Minecraft are downloaded by Prism Launcher from their official servers on first start.
+
+Riders Republic content (gear models, ride sounds, trick callouts) is never shipped: the mod reads it from your own
+Riders Republic install. Riders Republic is (c) Ubisoft. Minecraft is (c) Mojang. Not affiliated with either.

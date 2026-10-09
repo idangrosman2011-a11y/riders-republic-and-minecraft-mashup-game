@@ -1,14 +1,64 @@
 {
-  "_status": "DRAFT - not yet checked with Melty's validate_recipe / one_click_check (melty.gg is blocked from the build environment). Rename to melty.json once validated.",
+  "schemaVersion": 1,
+  "mode": "installed",
   "games": [
-    {"slug": "minecraft-java", "role": "primary", "version": "1.21.1", "loader": "fabric"},
-    {"slug": "custom-riders-republic", "role": "companion"}
+    {
+      "slug": "minecraft-java",
+      "role": "primary",
+      "version": "1.21.1"
+    },
+    {
+      "slug": "custom-riders-republic",
+      "role": "companion"
+    }
   ],
   "components": [
-    {"fileName": "riderscraft-*.jar", "install": "{minecraft-instance}/mods"}
+    {
+      "id": "main",
+      "fileName": "RidersCraft-*.zip",
+      "label": "Riders Craft (Minecraft instance)",
+      "kind": "main",
+      "required": true
+    }
   ],
+  "requirements": [],
+  "mappings": [
+    {
+      "component": "main",
+      "from": "",
+      "to": "{localappdata}/RidersCraft"
+    }
+  ],
+  "setup": {
+    "label": "Minecraft",
+    "launch": {
+      "kind": "exe",
+      "path": "{localappdata}/RidersCraft/Prism/prismlauncher.exe",
+      "args": [
+        "--launch",
+        "RidersCraft"
+      ],
+      "env": {
+        "RIDERSCRAFT_RR_DIR": "{game:custom-riders-republic}"
+      }
+    },
+    "done": {
+      "file": "{localappdata}/RidersCraft/Prism/instances/RidersCraft/.minecraft/logs/latest.log",
+      "contains": "Riders Craft loaded"
+    }
+  },
   "launch": {
-    "kind": "game",
-    "env": {"RIDERSCRAFT_RR_DIR": "{game:custom-riders-republic}"}
-  }
+    "kind": "exe",
+    "path": "{localappdata}/RidersCraft/Prism/prismlauncher.exe",
+    "args": [
+      "--launch",
+      "RidersCraft"
+    ],
+    "env": {
+      "RIDERSCRAFT_RR_DIR": "{game:custom-riders-republic}"
+    }
+  },
+  "runtimeData": [
+    "{localappdata}/RidersCraft"
+  ]
 }

@@ -4,14 +4,21 @@
   "version": "${version}",
   "name": "Riders Craft",
   "description": "Riders Republic's bikes, BMX, skis, snowboard and wingsuits in Minecraft, built from your own Riders Republic install, with its tricks, callouts and ride sounds.",
-  "authors": ["idangrosman2011"],
-  "license": "MIT",
+  "authors": [
+    "idangrosman2011"
+  ],
   "environment": "*",
   "entrypoints": {
-    "main": ["gg.riderscraft.RidersCraft"],
-    "client": ["gg.riderscraft.client.RidersCraftClient"]
+    "main": [
+      "gg.riderscraft.RidersCraft"
+    ],
+    "client": [
+      "gg.riderscraft.client.RidersCraftClient"
+    ]
   },
-  "mixins": ["riderscraft.mixins.json"],
+  "mixins": [
+    "riderscraft.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.16.0",
     "fabric-api": "*",

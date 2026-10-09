@@ -61,7 +61,10 @@ public class GearLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<Abs
             case "bike" -> { hw = 0.1f; len = 0.9f; top = 0.9f; }
             case "skis" -> { hw = 0.3f; len = 0.9f; top = 0.05f; }
             case "board" -> { hw = 0.15f; len = 0.75f; top = 0.05f; }
-            default -> { hw = 0.9f; len = 0.4f; top = 0.05f; } // wings
+            default -> { // wings: a membrane from wrists to ankles, in the body's own plane
+                net.minecraft.client.renderer.LevelRenderer.renderLineBox(pose, vc, -0.9, 0.2, -0.05, 0.9, 1.45, 0.05, 1f, 0.42f, 0f, 1f);
+                return;
+            }
         }
         net.minecraft.client.renderer.LevelRenderer.renderLineBox(pose, vc, -hw, 0, -len, hw, top, len, 1f, 0.42f, 0f, 1f);
     }

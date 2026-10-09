@@ -7,6 +7,10 @@ group = 'gg.riderscraft'
 
 base { archivesName = 'riderscraft' }
 
+repositories {
+    maven { name = 'CentralMirror'; url = 'https://maven-central.storage-download.googleapis.com/maven2/' }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()
@@ -40,6 +44,7 @@ loom {
     runs {
         client {
             // Lets a dev run find a Riders Republic folder the same way Melty passes it.
+            if (System.getenv('RIDERSCRAFT_DEVTEST')) vmArg '-Driderscraft.devtest=true'
             environmentVariable 'RIDERSCRAFT_RR_DIR', System.getenv('RIDERSCRAFT_RR_DIR') ?: ''
         }
     }

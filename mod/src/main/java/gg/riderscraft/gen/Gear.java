@@ -2,29 +2,29 @@
 package gg.riderscraft.gen;
 
 public enum Gear {
-    ON_FOOT("On Foot", "none", Physics.VANILLA, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "none", "none", "none"),
-    MOUNTAIN_BIKE("Mountain Bike", "bike", Physics.GROUND, 1, 1.1f, 0.03f, 9.0f, 0.55f, 0.012f, true, 1.1f, 0.12f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_bike_mtb", "sound_bike_roll", "bike"),
-    BMX("BMX", "bmx", Physics.GROUND, 2, 0.85f, 0.036f, 12.0f, 0.45f, 0.014f, true, 1.1f, 0.18f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_bike_bmx", "sound_bike_roll", "bike"),
-    SKIS("Skis", "ski", Physics.GROUND, 3, 1.35f, 0.008f, 8.0f, 0.75f, 0.006f, false, 0.6f, 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_skis", "sound_snow_carve", "skis"),
-    SNOWBOARD("Snowboard", "snowboard", Physics.GROUND, 4, 1.25f, 0.006f, 10.0f, 0.7f, 0.007f, false, 0.6f, 0.14f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_snowboard", "sound_snow_carve", "board"),
-    WINGSUIT("Wingsuit", "wingsuit", Physics.GLIDE, 5, 2.4f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.8f, 0.12f, 0.045f, 0.992f, 0.0f, 0, 0.0f, "model_wingsuit", "sound_wind", "wings"),
-    ROCKET_WINGSUIT("Rocket Wingsuit", "rocket_wingsuit", Physics.GLIDE, 6, 2.8f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.8f, 0.12f, 0.045f, 0.992f, 0.09f, 100, 0.4f, "model_rocket_wingsuit", "sound_rocket", "wings");
+    ON_FOOT("On Foot", "none", Physics.VANILLA, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "none", "none", "none"),
+    MOUNTAIN_BIKE("Mountain Bike", "bike", Physics.GROUND, 1, 1.1f, 0.03f, 0.55f, 9.0f, 0.55f, 0.012f, true, 1.1f, 0.22f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_bike_mtb", "sound_bike_roll", "bike"),
+    BMX("BMX", "bmx", Physics.GROUND, 2, 0.85f, 0.036f, 0.5f, 12.0f, 0.45f, 0.014f, true, 1.1f, 0.28f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_bike_bmx", "sound_bike_roll", "bike"),
+    SKIS("Skis", "ski", Physics.GROUND, 3, 1.35f, 0.008f, 0.15f, 8.0f, 0.75f, 0.006f, false, 1.1f, 0.22f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_skis", "sound_snow_carve", "skis"),
+    SNOWBOARD("Snowboard", "snowboard", Physics.GROUND, 4, 1.25f, 0.006f, 0.12f, 10.0f, 0.7f, 0.007f, false, 1.1f, 0.26f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0.0f, "model_snowboard", "sound_snow_carve", "board"),
+    WINGSUIT("Wingsuit", "wingsuit", Physics.GLIDE, 5, 2.4f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.8f, 0.12f, 0.045f, 0.992f, 0.0f, 0, 0.0f, "model_wingsuit", "sound_wind", "wings"),
+    ROCKET_WINGSUIT("Rocket Wingsuit", "rocket_wingsuit", Physics.GLIDE, 6, 2.8f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, 0.6f, 0.0f, 0.8f, 0.12f, 0.045f, 0.992f, 0.09f, 100, 0.4f, "model_rocket_wingsuit", "sound_rocket", "wings");
 
     public enum Physics { VANILLA, GROUND, GLIDE }
 
     public final String displayName, sport, rrModel, rrSound, fallbackShape;
     public final Physics physics;
     public final int wheelSlot, boostFuelTicks;
-    public final float maxSpeed, pedalAccel, turnRate, slopeGain, friction, stepHeight, jumpBoost,
+    public final float maxSpeed, pedalAccel, pedalTopSpeed, turnRate, slopeGain, friction, stepHeight, jumpBoost,
             glideLift, glideDive, glideClimb, glideDrag, boostAccel, fuelRegen;
     public final boolean canClimb;
 
-    Gear(String displayName, String sport, Physics physics, int wheelSlot, float maxSpeed, float pedalAccel, float turnRate,
+    Gear(String displayName, String sport, Physics physics, int wheelSlot, float maxSpeed, float pedalAccel, float pedalTopSpeed, float turnRate,
          float slopeGain, float friction, boolean canClimb, float stepHeight, float jumpBoost, float glideLift, float glideDive,
          float glideClimb, float glideDrag, float boostAccel, int boostFuelTicks, float fuelRegen,
          String rrModel, String rrSound, String fallbackShape) {
         this.displayName = displayName; this.sport = sport; this.physics = physics; this.wheelSlot = wheelSlot;
-        this.maxSpeed = maxSpeed; this.pedalAccel = pedalAccel; this.turnRate = turnRate; this.slopeGain = slopeGain;
+        this.maxSpeed = maxSpeed; this.pedalAccel = pedalAccel; this.pedalTopSpeed = pedalTopSpeed; this.turnRate = turnRate; this.slopeGain = slopeGain;
         this.friction = friction; this.canClimb = canClimb; this.stepHeight = stepHeight; this.jumpBoost = jumpBoost;
         this.glideLift = glideLift; this.glideDive = glideDive; this.glideClimb = glideClimb; this.glideDrag = glideDrag;
         this.boostAccel = boostAccel; this.boostFuelTicks = boostFuelTicks; this.fuelRegen = fuelRegen;
