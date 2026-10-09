@@ -1,0 +1,17 @@
+{
+  "sheet": "controls",
+  "about": "Every key the mashup reads. Keys are GLFW names. 'vanilla:' keys reuse the player's Minecraft binding. Generates ControlDefs.java.",
+  "columns": ["id","label","key","context","action"],
+  "rows": [
+    {"id":"gear_wheel","label":"Gear wheel (hold)","key":"GLFW_KEY_1","context":"any","action":"Hold to open the Riders Republic gear wheel, release on a sport to switch. A quick tap still selects hotbar slot 1."},
+    {"id":"flip_forward","label":"Front flip","key":"vanilla:keyUp","context":"air","action":"Rotate forward while airborne"},
+    {"id":"flip_back","label":"Back flip","key":"vanilla:keyDown","context":"air","action":"Rotate backward while airborne"},
+    {"id":"spin_left","label":"Spin left","key":"vanilla:keyLeft","context":"air","action":"Spin left while airborne"},
+    {"id":"spin_right","label":"Spin right","key":"vanilla:keyRight","context":"air","action":"Spin right while airborne"},
+    {"id":"grab_left","label":"Grab / trick 1","key":"GLFW_KEY_Z","context":"air","action":"Left grab (snow) or style trick 1 (bike)"},
+    {"id":"grab_right","label":"Grab / trick 2","key":"GLFW_KEY_X","context":"air","action":"Right grab (snow) or style trick 2 (bike)"},
+    {"id":"style","label":"Style trick","key":"GLFW_KEY_C","context":"air","action":"Combine with a direction for bike style tricks, snow tweaks and wingsuit rolls"},
+    {"id":"boost","label":"Pedal / rocket boost","key":"vanilla:keySprint","context":"any","action":"Pedal harder on bikes, fire the rocket on the rocket wingsuit"},
+    {"id":"deploy","label":"Deploy wingsuit","key":"vanilla:keyJump","context":"air","action":"Press in the air with a wingsuit equipped to start gliding"}
+  ]
+}

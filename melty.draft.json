@@ -1,0 +1,14 @@
+{
+  "_status": "DRAFT - not yet checked with Melty's validate_recipe / one_click_check (melty.gg is blocked from the build environment). Rename to melty.json once validated.",
+  "games": [
+    {"slug": "minecraft-java", "role": "primary", "version": "1.21.1", "loader": "fabric"},
+    {"slug": "custom-riders-republic", "role": "companion"}
+  ],
+  "components": [
+    {"fileName": "riderscraft-*.jar", "install": "{minecraft-instance}/mods"}
+  ],
+  "launch": {
+    "kind": "game",
+    "env": {"RIDERSCRAFT_RR_DIR": "{game:custom-riders-republic}"}
+  }
+}

@@ -1,0 +1,4 @@
+mod/.gradle/
+mod/build/
+mod/run/
+*.class

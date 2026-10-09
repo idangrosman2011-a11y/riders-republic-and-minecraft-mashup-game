@@ -1,0 +1,50 @@
+{
+ "sound_bike_roll": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_bike_roll",
+    "stream": false
+   }
+  ]
+ },
+ "sound_snow_carve": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_snow_carve",
+    "stream": false
+   }
+  ]
+ },
+ "sound_wind": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_wind",
+    "stream": true
+   }
+  ]
+ },
+ "sound_rocket": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_rocket",
+    "stream": true
+   }
+  ]
+ },
+ "sound_trick_land": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_trick_land",
+    "stream": false
+   }
+  ]
+ },
+ "sound_trick_bail": {
+  "sounds": [
+   {
+    "name": "riderscraft:imported/sound_trick_bail",
+    "stream": false
+   }
+  ]
+ }
+}

@@ -1,0 +1,432 @@
+{
+ "sheet": "tricks",
+ "about": "Every trick the mashup scores. 'input' is control ids joined with + (held together) and | (alternatives). Flip and spin rows are multiplied by full rotations (Double Backflip, 720). Generates TrickDefs.java. rrCallout is <rr_content row>#<key>: the trick's name as Riders Republic's own text shows it, used instead of 'name' once imported.",
+ "columns": [
+  "id",
+  "name",
+  "sports",
+  "kind",
+  "input",
+  "points",
+  "holdPointsPerTick",
+  "animTicks",
+  "rrCallout"
+ ],
+ "rows": [
+  {
+   "id": "frontflip",
+   "name": "Frontflip",
+   "sports": [
+    "bike",
+    "bmx",
+    "ski",
+    "snowboard",
+    "wingsuit",
+    "rocket_wingsuit"
+   ],
+   "kind": "flip",
+   "input": "flip_forward",
+   "points": 400,
+   "holdPointsPerTick": 0,
+   "animTicks": 0,
+   "rrCallout": "callout_text#frontflip"
+  },
+  {
+   "id": "backflip",
+   "name": "Backflip",
+   "sports": [
+    "bike",
+    "bmx",
+    "ski",
+    "snowboard",
+    "wingsuit",
+    "rocket_wingsuit"
+   ],
+   "kind": "flip",
+   "input": "flip_back",
+   "points": 400,
+   "holdPointsPerTick": 0,
+   "animTicks": 0,
+   "rrCallout": "callout_text#backflip"
+  },
+  {
+   "id": "spin",
+   "name": "Spin",
+   "sports": [
+    "bike",
+    "bmx",
+    "ski",
+    "snowboard"
+   ],
+   "kind": "spin",
+   "input": "spin_left|spin_right",
+   "points": 120,
+   "holdPointsPerTick": 0,
+   "animTicks": 0,
+   "rrCallout": "callout_text#spin"
+  },
+  {
+   "id": "mute",
+   "name": "Mute Grab",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_left",
+   "points": 150,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#mute"
+  },
+  {
+   "id": "indy",
+   "name": "Indy Grab",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_right",
+   "points": 150,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#indy"
+  },
+  {
+   "id": "method",
+   "name": "Method",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_left+style",
+   "points": 220,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#method"
+  },
+  {
+   "id": "melon",
+   "name": "Melon",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_right+style",
+   "points": 200,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#melon"
+  },
+  {
+   "id": "nose_grab",
+   "name": "Nose Grab",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_left+flip_forward",
+   "points": 180,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#nose_grab"
+  },
+  {
+   "id": "tail_grab",
+   "name": "Tail Grab",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_right+flip_back",
+   "points": 180,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#tail_grab"
+  },
+  {
+   "id": "japan",
+   "name": "Japan",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_left+spin_left",
+   "points": 240,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#japan"
+  },
+  {
+   "id": "stalefish",
+   "name": "Stalefish",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "grab",
+   "input": "grab_right+spin_right",
+   "points": 240,
+   "holdPointsPerTick": 6,
+   "animTicks": 0,
+   "rrCallout": "callout_text#stalefish"
+  },
+  {
+   "id": "cork",
+   "name": "Cork",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "style",
+   "input": "style+spin_left",
+   "points": 500,
+   "holdPointsPerTick": 0,
+   "animTicks": 14,
+   "rrCallout": "callout_text#cork"
+  },
+  {
+   "id": "rodeo",
+   "name": "Rodeo",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "style",
+   "input": "style+flip_back",
+   "points": 550,
+   "holdPointsPerTick": 0,
+   "animTicks": 14,
+   "rrCallout": "callout_text#rodeo"
+  },
+  {
+   "id": "misty",
+   "name": "Misty",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "style",
+   "input": "style+flip_forward",
+   "points": 550,
+   "holdPointsPerTick": 0,
+   "animTicks": 14,
+   "rrCallout": "callout_text#misty"
+  },
+  {
+   "id": "lincoln_loop",
+   "name": "Lincoln Loop",
+   "sports": [
+    "ski",
+    "snowboard"
+   ],
+   "kind": "style",
+   "input": "style+spin_right",
+   "points": 600,
+   "holdPointsPerTick": 0,
+   "animTicks": 16,
+   "rrCallout": "callout_text#lincoln_loop"
+  },
+  {
+   "id": "tailwhip",
+   "name": "Tailwhip",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_left",
+   "points": 300,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#tailwhip"
+  },
+  {
+   "id": "barspin",
+   "name": "Barspin",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_right",
+   "points": 250,
+   "holdPointsPerTick": 0,
+   "animTicks": 8,
+   "rrCallout": "callout_text#barspin"
+  },
+  {
+   "id": "superman",
+   "name": "Superman",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_left+flip_back",
+   "points": 350,
+   "holdPointsPerTick": 0,
+   "animTicks": 14,
+   "rrCallout": "callout_text#superman"
+  },
+  {
+   "id": "no_hander",
+   "name": "No Hander",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_right+flip_forward",
+   "points": 200,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#no_hander"
+  },
+  {
+   "id": "can_can",
+   "name": "Can Can",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_left+spin_left",
+   "points": 220,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#can_can"
+  },
+  {
+   "id": "nac_nac",
+   "name": "Nac Nac",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_right+spin_right",
+   "points": 220,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#nac_nac"
+  },
+  {
+   "id": "tuck_no_hander",
+   "name": "Tuck No Hander",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "style",
+   "points": 260,
+   "holdPointsPerTick": 0,
+   "animTicks": 12,
+   "rrCallout": "callout_text#tuck_no_hander"
+  },
+  {
+   "id": "x_up",
+   "name": "X-Up",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "style+spin_left",
+   "points": 240,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#x_up"
+  },
+  {
+   "id": "double_tailwhip",
+   "name": "Double Tailwhip",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "grab_left+style",
+   "points": 550,
+   "holdPointsPerTick": 0,
+   "animTicks": 16,
+   "rrCallout": "callout_text#double_tailwhip"
+  },
+  {
+   "id": "toboggan",
+   "name": "Toboggan",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "style+spin_right",
+   "points": 280,
+   "holdPointsPerTick": 0,
+   "animTicks": 12,
+   "rrCallout": "callout_text#toboggan"
+  },
+  {
+   "id": "seat_grab",
+   "name": "Seat Grab",
+   "sports": [
+    "bike",
+    "bmx"
+   ],
+   "kind": "style",
+   "input": "style+flip_back",
+   "points": 200,
+   "holdPointsPerTick": 0,
+   "animTicks": 10,
+   "rrCallout": "callout_text#seat_grab"
+  },
+  {
+   "id": "barrel_roll",
+   "name": "Barrel Roll",
+   "sports": [
+    "wingsuit",
+    "rocket_wingsuit"
+   ],
+   "kind": "roll",
+   "input": "style+spin_left|style+spin_right",
+   "points": 300,
+   "holdPointsPerTick": 0,
+   "animTicks": 16,
+   "rrCallout": "callout_text#barrel_roll"
+  },
+  {
+   "id": "proximity",
+   "name": "Proximity",
+   "sports": [
+    "wingsuit",
+    "rocket_wingsuit"
+   ],
+   "kind": "proximity",
+   "input": "none",
+   "points": 0,
+   "holdPointsPerTick": 4,
+   "animTicks": 0,
+   "rrCallout": "callout_text#proximity"
+  },
+  {
+   "id": "rocket_boost",
+   "name": "Boost",
+   "sports": [
+    "rocket_wingsuit"
+   ],
+   "kind": "meta",
+   "input": "boost",
+   "points": 0,
+   "holdPointsPerTick": 0,
+   "animTicks": 0,
+   "rrCallout": "callout_text#rocket_boost"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheet": "surfaces",
+  "about": "How each Minecraft ground type rides for each physics family. frictionMul multiplies the gear's friction; a high value on snow gear means it bogs down. Generates SurfaceDefs.java.",
+  "columns": ["id","blockTag","bikeFrictionMul","snowFrictionMul","label"],
+  "rows": [
+    {"id":"snow","blockTag":"minecraft:snow|minecraft:snow_block|minecraft:powder_snow","bikeFrictionMul":2.5,"snowFrictionMul":0.6,"label":"Powder"},
+    {"id":"ice","blockTag":"minecraft:ice|minecraft:packed_ice|minecraft:blue_ice|minecraft:frosted_ice","bikeFrictionMul":0.4,"snowFrictionMul":0.25,"label":"Ice"},
+    {"id":"dirt","blockTag":"minecraft:dirt|minecraft:grass_block|minecraft:coarse_dirt|minecraft:podzol|minecraft:dirt_path|minecraft:mud|minecraft:rooted_dirt","bikeFrictionMul":1.0,"snowFrictionMul":6.0,"label":"Dirt"},
+    {"id":"rock","blockTag":"minecraft:stone|minecraft:andesite|minecraft:diorite|minecraft:granite|minecraft:deepslate|minecraft:tuff|minecraft:calcite|minecraft:gravel","bikeFrictionMul":1.2,"snowFrictionMul":7.0,"label":"Rock"},
+    {"id":"sand","blockTag":"minecraft:sand|minecraft:red_sand","bikeFrictionMul":3.0,"snowFrictionMul":8.0,"label":"Sand"},
+    {"id":"default","blockTag":"*","bikeFrictionMul":1.0,"snowFrictionMul":5.0,"label":"Ground"}
+  ]
+}

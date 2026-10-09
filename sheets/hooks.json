@@ -1,0 +1,19 @@
+{
+  "sheet": "hooks",
+  "about": "Every place the mod touches Minecraft or Riders Republic. 'anchor' must appear in 'sourceFile' (preflight checks it). 'side' is client, server or both.",
+  "columns": ["id","what","side","minecraftApi","sourceFile","anchor"],
+  "rows": [
+    {"id":"gear_payload","what":"Client tells the server which gear is equipped","side":"both","minecraftApi":"Fabric PayloadTypeRegistry.playC2S + ServerPlayNetworking","sourceFile":"mod/src/main/java/gg/riderscraft/net/GearPayload.java","anchor":"record GearPayload"},
+    {"id":"server_gear_state","what":"Server keeps gear per player, removes fall damage, raises step height for bikes","side":"server","minecraftApi":"ServerTickEvents.END_SERVER_TICK + Attributes.STEP_HEIGHT","sourceFile":"mod/src/main/java/gg/riderscraft/RidersCraft.java","anchor":"END_SERVER_TICK"},
+    {"id":"ride_physics","what":"Ground and glide physics for the equipped gear","side":"client","minecraftApi":"ClientTickEvents.END_CLIENT_TICK + LocalPlayer.setDeltaMovement","sourceFile":"mod/src/main/java/gg/riderscraft/client/RidePhysics.java","anchor":"class RidePhysics"},
+    {"id":"trick_system","what":"Reads air inputs, tracks rotations and grabs, scores on landing","side":"client","minecraftApi":"KeyMapping polling while !onGround","sourceFile":"mod/src/main/java/gg/riderscraft/client/TrickSystem.java","anchor":"class TrickSystem"},
+    {"id":"gear_wheel","what":"Hold 1 to open the radial gear wheel","side":"client","minecraftApi":"KeyBindingHelper + Screen","sourceFile":"mod/src/main/java/gg/riderscraft/client/GearWheelScreen.java","anchor":"class GearWheelScreen"},
+    {"id":"hud","what":"Speed, combo, trick callouts and rocket fuel","side":"client","minecraftApi":"HudRenderCallback","sourceFile":"mod/src/main/java/gg/riderscraft/client/RiderHud.java","anchor":"class RiderHud"},
+    {"id":"rider_pose","what":"Rotates the rider for flips, spins, rolls and the wingsuit glide pose","side":"client","minecraftApi":"Mixin PlayerRenderer.setupRotations","sourceFile":"mod/src/main/java/gg/riderscraft/mixin/PlayerRendererMixin.java","anchor":"setupRotations"},
+    {"id":"gear_layer","what":"Draws the Riders Republic gear model on the rider","side":"client","minecraftApi":"LivingEntityFeatureRendererRegistrationCallback + RenderLayer","sourceFile":"mod/src/main/java/gg/riderscraft/client/GearLayer.java","anchor":"class GearLayer"},
+    {"id":"ride_sounds","what":"Looping ride audio scaled by speed","side":"client","minecraftApi":"AbstractTickableSoundInstance","sourceFile":"mod/src/main/java/gg/riderscraft/client/RideSound.java","anchor":"class RideSound"},
+    {"id":"rr_locate","what":"Finds the player's Riders Republic folder (RIDERSCRAFT_RR_DIR from Melty)","side":"client","minecraftApi":"none (file system)","sourceFile":"mod/src/main/java/gg/riderscraft/rr/RidersRepublicInstall.java","anchor":"RIDERSCRAFT_RR_DIR"},
+    {"id":"rr_import","what":"Extracts gear models, sounds and callout text from the install into the instance","side":"client","minecraftApi":"none (file system)","sourceFile":"mod/src/main/java/gg/riderscraft/rr/RRImporter.java","anchor":"class RRImporter"},
+    {"id":"imported_pack","what":"Enables the generated resource pack holding the imported sounds","side":"client","minecraftApi":"Options.resourcePacks + Minecraft.reloadResourcePacks","sourceFile":"mod/src/main/java/gg/riderscraft/client/ImportedPack.java","anchor":"reloadResourcePacks"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "sheet": "rr_content",
+  "about": "Riders Republic content the mod reads from the player's own install at first launch (never shipped). 'source' is relative to the Riders Republic folder Melty passes in RIDERSCRAFT_RR_DIR. 'verified' becomes true only after the row was extracted from a real install and shown in game.",
+  "columns": ["id","kind","source","container","decoder","output","verified"],
+  "rows": [
+    {"id":"model_bike_mtb","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_bike_mtb.json","verified":false},
+    {"id":"model_bike_bmx","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_bike_bmx.json","verified":false},
+    {"id":"model_skis","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_skis.json","verified":false},
+    {"id":"model_snowboard","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_snowboard.json","verified":false},
+    {"id":"model_wingsuit","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_wingsuit.json","verified":false},
+    {"id":"model_rocket_wingsuit","kind":"model","source":"DataPC*.forge","container":"forge","decoder":"anvil_mesh","output":"imported/models/model_rocket_wingsuit.json","verified":false},
+    {"id":"sound_bike_roll","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_bike_roll.ogg","verified":false},
+    {"id":"sound_snow_carve","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_snow_carve.ogg","verified":false},
+    {"id":"sound_wind","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_wind.ogg","verified":false},
+    {"id":"sound_rocket","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_rocket.ogg","verified":false},
+    {"id":"sound_trick_land","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_trick_land.ogg","verified":false},
+    {"id":"sound_trick_bail","kind":"sound","source":"sounddata/pc/*.pck","container":"wwise_pck","decoder":"wem_to_ogg","output":"resourcepack:assets/riderscraft/sounds/imported/sound_trick_bail.ogg","verified":false},
+    {"id":"callout_text","kind":"text","source":"DataPC*.forge","container":"forge","decoder":"anvil_loc","output":"imported/callouts.json","verified":false}
+  ]
+}

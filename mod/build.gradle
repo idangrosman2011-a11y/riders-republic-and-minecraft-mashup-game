@@ -1,0 +1,46 @@
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+group = 'gg.riderscraft'
+
+base { archivesName = 'riderscraft' }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+// The sheets are the source of truth: regenerate the enums before every compile.
+tasks.register('codegen', Exec) {
+    workingDir rootProject.projectDir.parentFile
+    commandLine 'python3', 'tools/codegen.py'
+}
+tasks.register('preflight', Exec) {
+    workingDir rootProject.projectDir.parentFile
+    commandLine 'python3', 'tools/preflight.py'
+}
+compileJava.dependsOn codegen, preflight
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile).configureEach { it.options.release = 21 }
+
+loom {
+    runs {
+        client {
+            // Lets a dev run find a Riders Republic folder the same way Melty passes it.
+            environmentVariable 'RIDERSCRAFT_RR_DIR', System.getenv('RIDERSCRAFT_RR_DIR') ?: ''
+        }
+    }
+}
